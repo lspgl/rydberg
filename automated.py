@@ -16,7 +16,7 @@ def automated_routine(fn):
     optimizer = opt.Optimizer(maxit=1000)
     optcell = optimizer.optimize(cell)
     optcell.plotdipoles(fn=opt_name)
-    optcell.write(fn=opt_name + '.csv')
+    optcell.write(fn='opt/' + opt_name + '.csv')
 
 
 if __name__ == '__main__':
@@ -24,5 +24,6 @@ if __name__ == '__main__':
     files = [f for f in listdir(path) if isfile(join(path, f))]
     files_csv = [f for f in files if f.split('.')[1] == 'csv']
 
+    print(files_csv)
     for fn in files_csv:
         automated_routine(fn)
