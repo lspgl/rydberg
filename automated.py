@@ -12,17 +12,17 @@ def automated_routine(fn):
     opt_name = fn_stripped + '_opt'
     cell = config.Configuration()
     cell.read(fn=fn)
-    cell.plotdipoles(fn=init_name)
+    cell.plotdipoles(fn=init_name.split('/')[-1])
     optimizer = opt.Optimizer(maxit=1000)
     optcell = optimizer.optimize(cell)
-    optcell.plotdipoles(fn=opt_name)
+    optcell.plotdipoles(fn=opt_name.split('/')[-1])
     optcell.write(fn='opt/' + opt_name + '.csv')
 
 
 if __name__ == '__main__':
     path = 'csv/'
     files = [f for f in listdir(path) if isfile(join(path, f))]
-    files_csv = [f for f in files if f.split('.')[1] == 'csv']
+    files_csv = [path + f for f in files if f.split('.')[1] == 'csv']
 
     print(files_csv)
     for fn in files_csv:
