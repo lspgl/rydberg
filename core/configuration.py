@@ -17,7 +17,7 @@ class Configuration:
     def read(self, fn):
         print(colors.YEL + 'Reading CSV: ' + colors.WARNING + fn + colors.ENDC)
         self.population = []
-        with open(fn, 'rb') as csvfile:
+        with open(fn, 'r') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
             for i, row in enumerate(reader):
                 position = make_tuple(row[0])
@@ -44,7 +44,7 @@ class Configuration:
 
     def write(self, fn):
         print(colors.YEL + 'Writing CSV: ' + colors.WARNING + fn + colors.ENDC)
-        with open(fn, 'wb') as csvfile:
+        with open(fn, 'w') as csvfile:
             writer = csv.writer(csvfile, delimiter=';')
             for atom in self.population:
                 payload = [atom.pos, atom.moment]

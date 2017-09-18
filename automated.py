@@ -6,6 +6,7 @@ from os.path import isfile, join
 
 
 def automated_routine(fn):
+    print('Optimizing', fn)
     fn_stripped = fn.split('.')[0]
     init_name = fn_stripped + '_init'
     opt_name = fn_stripped + '_opt'
