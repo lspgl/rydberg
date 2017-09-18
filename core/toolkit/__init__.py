@@ -1,5 +1,5 @@
-from aux import colors
-import electronics
-import stepMatrix
-import vectools
-import fret
+from .aux import colors
+from . import electronics
+# from . import stepMatrix
+from . import vectools
+# from . import fret

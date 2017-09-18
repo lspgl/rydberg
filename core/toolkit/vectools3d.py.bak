@@ -7,7 +7,7 @@ def normvector(v):
     x, y, z = v
     n = math.sqrt(x**2 + y**2 + z**2)
     if n == 0:
-        print('WARNING: Zero norm')
+        print 'WARNING: Zero norm'
         return (0, 0, 0)
     xn = x / n
     yn = y / n
@@ -62,7 +62,7 @@ def scalarproduct(v1, v2):
 
 
 if __name__ == '__main__':
-    print('TESTING VECTOR TOOLS')
+    print 'TESTING VECTOR TOOLS'
 
     testvect_a = (1, 1, 1)
     testvect_b = (0, 0, 0)
@@ -73,20 +73,20 @@ if __name__ == '__main__':
 
     mags = vectormags(vectarr)
     assert mags == comparator
-    print('vectormags OK')
+    print 'vectormags OK'
 
     dist = pointdist(testvect_a, testvect_b)
     assert dist == math.sqrt(3)
-    print('pointdist OK')
+    print 'pointdist OK'
 
     conn = connvector(testvect_a, testvect_b, norm=False)
     assert conn == (-1, -1, -1)
-    print('connvector OK')
+    print 'connvector OK'
 
     s1 = scalarproduct(testvect_a, testvect_b)
     s2 = scalarproduct(testvect_b, testvect_a)
     assert s1 == s2
     assert s1 == 0
-    print('scalarproduct OK')
+    print 'scalarproduct OK'
 
-    print('VECTOR TOOLS OK')
+    print 'VECTOR TOOLS OK'

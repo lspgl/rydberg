@@ -1,8 +1,8 @@
 import numpy as np
 import math
 import sys
-from .toolkit.aux import colors
-from .toolkit import electronics, vectools3d
+from toolkit.aux import colors
+from toolkit import electronics, vectools3d
 from functools import partial
 import multiprocessing as mp
 import random as rand
@@ -75,10 +75,10 @@ class Optimizer:
             # if self.maxMismatch < criterion:
             #    break
         if converged:
-            print(colors.YEL + 'Convergence after ' + str(self.conv_counter) + ' Steps.' + colors.ENDC)
+            print colors.YEL + 'Convergence after ' + str(self.conv_counter) + ' Steps.' + colors.ENDC
         else:
-            print(colors.WARNING + 'No convergence after ' + str(self.conv_counter) + ' Steps.' + colors.ENDC)
-            print('Using current state as best guess...')
+            print colors.WARNING + 'No convergence after ' + str(self.conv_counter) + ' Steps.' + colors.ENDC
+            print 'Using current state as best guess...'
         self.conv_counter = 0
 
     def mismatchAngle(self):
@@ -118,7 +118,7 @@ class Optimizer:
         self.mismatchAngle()
 
     def plotConvergence(self):
-        print(colors.RED + 'Plotting Convergence' + colors.ENDC)
+        print colors.RED + 'Plotting Convergence' + colors.ENDC
         import matplotlib.pyplot as plt
         fig = plt.figure(figsize=(12, 8))
         ax = fig.add_subplot(111)

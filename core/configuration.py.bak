@@ -1,10 +1,10 @@
 import random as rand
-from .rydberg import Rydberg
+from rydberg import Rydberg
 import copy
 import csv
 import math
-from .toolkit import vectools3d
-from .toolkit.aux import colors
+from toolkit import vectools3d
+from toolkit.aux import colors
 from ast import literal_eval as make_tuple
 
 
@@ -12,10 +12,10 @@ class Configuration:
 
     def __init__(self):
         self.population = []
-        print(colors.RED + 'Empty cell initialized' + colors.ENDC)
+        print colors.RED + 'Empty cell initialized' + colors.ENDC
 
     def read(self, fn):
-        print(colors.YEL + 'Reading CSV: ' + colors.WARNING + fn + colors.ENDC)
+        print colors.YEL + 'Reading CSV: ' + colors.WARNING + fn + colors.ENDC
         self.population = []
         with open(fn, 'rb') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
@@ -26,7 +26,7 @@ class Configuration:
                 self.population.append(copy.copy(atom))
 
     def readpos(self, fn, m=None):
-        print(colors.YEL + 'Reading TXT: ' + colors.WARNING + fn + colors.ENDC)
+        print colors.YEL + 'Reading TXT: ' + colors.WARNING + fn + colors.ENDC
         with open(fn) as f:
             content = f.readlines()
         # you may also want to remove whitespace characters like `\n` at the end of each line
@@ -43,7 +43,7 @@ class Configuration:
             self.population.append(copy.copy(atom))
 
     def write(self, fn):
-        print(colors.YEL + 'Writing CSV: ' + colors.WARNING + fn + colors.ENDC)
+        print colors.YEL + 'Writing CSV: ' + colors.WARNING + fn + colors.ENDC
         with open(fn, 'wb') as csvfile:
             writer = csv.writer(csvfile, delimiter=';')
             for atom in self.population:
@@ -51,7 +51,7 @@ class Configuration:
                 writer.writerow(payload)
 
     def makeRandom(self, n, cellsize, seed=None):
-        print(colors.RED + 'Populating randomly with ' + str(n) + ' Atoms' + colors.ENDC)
+        print colors.RED + 'Populating randomly with ' + str(n) + ' Atoms' + colors.ENDC
         rand.seed(seed)
         self.cellsize = cellsize
         for i in range(n):
@@ -66,7 +66,7 @@ class Configuration:
             self.population.append(copy.copy(atom))
 
     def makeAligned(self, n, cellsize, moment, seed=None):
-        print(colors.RED + 'Populating Aligned with ' + str(n) + ' Atoms' + colors.ENDC)
+        print colors.RED + 'Populating Aligned with ' + str(n) + ' Atoms' + colors.ENDC
         rand.seed(seed)
         self.cellsize = cellsize
         for i in range(n):
@@ -80,7 +80,7 @@ class Configuration:
             self.population.append(copy.copy(atom))
 
     def plotdipoles(self, fn='dipoles'):
-        print(colors.RED + 'Plotting Dipoles' + colors.ENDC)
+        print colors.RED + 'Plotting Dipoles' + colors.ENDC
         from mpl_toolkits.mplot3d import Axes3D
         import matplotlib.pyplot as plt
         fig = plt.figure(figsize=(12, 8))
@@ -99,8 +99,8 @@ class Configuration:
             tracepoint.append(0)
             momentLine = (origin, endpoint)
             traceLine = (origin, tracepoint)
-            ax.plot(*list(zip(*momentLine)), color='#d03600')
-            ax.plot(*list(zip(*traceLine)), marker='x', ms=1, color='black', alpha=0.2, lw=0.2)
+            ax.plot(*zip(*momentLine), color='#d03600')
+            ax.plot(*zip(*traceLine), marker='x', ms=1, color='black', alpha=0.2, lw=0.2)
 
         fig.savefig(('img/' + fn + '.png'), dpi=300)
 

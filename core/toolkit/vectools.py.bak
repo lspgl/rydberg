@@ -68,7 +68,7 @@ def minimumconnector(p1, p2, pref):
     return dist
 
 if __name__ == '__main__':
-    print('TESTING VECTOR TOOLS')
+    print 'TESTING VECTOR TOOLS'
 
     testvect_a = (1, 1)
     testvect_b = (0, 1)
@@ -79,21 +79,21 @@ if __name__ == '__main__':
 
     mags = vectormags(vectarr)
     assert mags == comparator
-    print('vectormags OK')
+    print 'vectormags OK'
 
     dist = pointdist(testvect_a, testvect_b)
     assert dist == 1
-    print('pointdist OK')
+    print 'pointdist OK'
 
     conn = connvector(testvect_a, testvect_b)
     assert conn == (-1, 0)
-    print('connvector OK')
+    print 'connvector OK'
 
     s1 = scalarproduct(testvect_a, testvect_b)
     s2 = scalarproduct(testvect_b, testvect_a)
     assert s1 == s2
     assert s1 == 1
-    print('scalarproduct OK')
+    print 'scalarproduct OK'
 
     p1 = (0, 0)
     p2 = (1, 0)
@@ -101,6 +101,6 @@ if __name__ == '__main__':
     assert minimumconnector(p1, p2, (0.5, 1)) == 1.0
     # Test outside line segment
     assert minimumconnector(p1, p2, (-1, 0)) == 1.0
-    print('minimumconnector OK')
+    print 'minimumconnector OK'
 
-    print('VECTOR TOOLS OK')
+    print 'VECTOR TOOLS OK'
