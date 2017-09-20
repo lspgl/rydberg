@@ -7,16 +7,20 @@ from os.path import isfile, join
 
 def automated_routine(fn):
     print('Optimizing', fn)
-    fn_stripped = fn.split('.')[0]
+    full_stripped = fn.split('.')[0]
+    fn_stripped = full_stripped.split('/')[-1]
+    dir_stripped = ''.join(subdirectory + '/' for subdirectory in full_stripped.split('/')[:-1])
+
     init_name = fn_stripped + '_init'
     opt_name = fn_stripped + '_opt'
+
     cell = config.Configuration()
     cell.read(fn=fn)
-    cell.plotdipoles(fn=init_name.split('/')[-1])
+    cell.plotdipoles(fn=init_name)
     optimizer = opt.Optimizer(maxit=1000)
     optcell = optimizer.optimize(cell)
-    optcell.plotdipoles(fn=opt_name.split('/')[-1])
-    optcell.write(fn='opt/' + opt_name + '.csv')
+    optcell.plotdipoles(fn=opt_name)
+    optcell.write(fn=dir_stripped + 'opt/' + opt_name + '.csv')
 
 
 if __name__ == '__main__':
